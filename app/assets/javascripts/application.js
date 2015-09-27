@@ -20,7 +20,6 @@
 //= require gmaps/google
 //= require pagination
 //= require gmap_lib
-//= require main_map
 //= require markerclusterer_packed
 //= require pagination
 //= require_tree .

@@ -18,5 +18,6 @@
 //= require carousel.connected-carousels
 //= require gmaps/google
 //= require pagination
-//= require jquery-1.11.3.min
+//= require jquery-1.13.3.min
+//= require pagination
 //= require_tree .

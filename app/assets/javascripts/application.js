@@ -19,7 +19,5 @@
 //= require carousel.connected-carousels
 //= require gmaps/google
 //= require pagination
-//= require gmap_lib
-//= require markerclusterer_packed
 //= require pagination
 //= require_tree .

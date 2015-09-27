@@ -49,4 +49,3 @@ tmp/
 .sass-cache/
 .project
 *~
-Gemfile.lock

@@ -19,5 +19,4 @@
 //= require carousel.connected-carousels
 //= require gmaps/google
 //= require pagination
-//= require pagination
 //= require_tree .

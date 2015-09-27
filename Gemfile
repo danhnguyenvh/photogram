@@ -40,6 +40,8 @@ gem 'httparty'
 gem 'gmaps4rails'
 gem 'coffee-script-source', '1.8.0'
 
+gem 'rails_12factor', group: :production
+
 group :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'rspec-core'

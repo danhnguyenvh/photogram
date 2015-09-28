@@ -57,7 +57,7 @@
     }
     $('.carousel-stage ul').html(large);
     $('.carousel-navigation ul').html(thumbnail);
-    reload_js('carousel.connected-carousels.js');
+    reload_js('assets/carousel.connected-carousels.js');
    }
   
   function reload_js(src) {

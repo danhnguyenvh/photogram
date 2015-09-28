@@ -55,9 +55,40 @@
       large += "<li><img src="+data[i].standard_resolution+" width='440px' height='440px' title='"+data[i].location_name+"' ></li>";
     }
     $('.carousel-stage ul').html(large);
-   // $('.carousel-navigation ul').html(thumbnail);
+    $('.carousel-navigation ul').html(thumbnail);
+    reloadCarousel();
    }
-  
+  var connector = function(itemNavigation, carouselStage) {
+     return carouselStage.jcarousel('items').eq(itemNavigation.index());
+  };
+
+  function reloadCarousel(){
+    var carouselStage      = $('.carousel-stage').jcarousel();
+    var carouselNavigation = $('.carousel-navigation').jcarousel();
+
+    // We loop through the items of the navigation carousel and set it up
+    // as a control for an item from the stage carousel.
+    carouselNavigation.jcarousel('items').each(function() {
+        var item = $(this);
+
+        // This is where we actually connect to items.
+        var target = connector(item, carouselStage);
+
+        item
+            .on('jcarouselcontrol:active', function() {
+                carouselNavigation.jcarousel('scrollIntoView', this);
+                item.addClass('active');
+            })
+            .on('jcarouselcontrol:inactive', function() {
+                item.removeClass('active');
+            })
+            .jcarouselControl({
+                target: target,
+                carousel: carouselStage
+            });
+    });
+  }
+
   function loadMap(data){
     var json_str = [];
     var len = data.length;

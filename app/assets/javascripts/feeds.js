@@ -56,13 +56,7 @@
     }
     $('.carousel-stage ul').html(large);
     $('.carousel-navigation ul').html(thumbnail);
-    reload_js('assets/carousel.connected-carousels.js');
    }
-  
-  function reload_js(src) {
-    $('script[src="' + src + '"]').remove();
-    $('<script>').attr('src', src).appendTo('head');
-  }
   
   function loadMap(data){
     var json_str = [];

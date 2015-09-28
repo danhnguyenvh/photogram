@@ -56,13 +56,8 @@
     }
     $('.carousel-stage ul').html(large);
     $('.carousel-navigation ul').html(thumbnail);
-    reload_js('jcarousel.connected-carousels.js');
    }
   
-  function reload_js(src) {
-    $('<script>').attr('src', src).appendTo('head');
-  }
-
   function loadMap(data){
     var json_str = [];
     var len = data.length;

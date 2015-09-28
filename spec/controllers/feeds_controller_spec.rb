@@ -3,10 +3,6 @@ require "rails_helper"
 RSpec.describe FeedsController do
   
   describe '#index' do
-    before do
-      session[:access_token] = 'access_token'
-      allow(controller).to receive(:auth_instagram).and_return true
-    end
     let(:data) do
       [{
         "type"=> "image",
@@ -48,7 +44,7 @@ RSpec.describe FeedsController do
         get :index
         expect(assigns(:res)).to be_nil
         expect(assigns(:photos)).to be_nil
-      end 
+      end
     end
   end
 end

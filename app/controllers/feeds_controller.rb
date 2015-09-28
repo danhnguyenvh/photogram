@@ -1,9 +1,7 @@
 class FeedsController < ApplicationController
-  before_filter :auth_instagram
-  
   def index
     return unless search_params.size > 0
-    param = search_params.merge!({ access_token: session[:access_token] })
+    param = search_params.merge!({ client_id: CLIENT_ID })
     res = InstagramService.media_search(param)
     @res = res.select { |item| item["type"]=="image"}
     @photos = Gmaps4rails.build_markers(@res) do |instagram, marker|
@@ -16,10 +14,6 @@ class FeedsController < ApplicationController
   end
   
   private
-  def auth_instagram
-  	redirect_to session_connect_path if !session[:access_token]
-  end
-
   def search_params
     params.permit(:lat, :lng, :distance)
   end

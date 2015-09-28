@@ -1,8 +1,3 @@
-require "instagram"
-
-Instagram.configure do |config|
-  config.client_id = "6fe103c0b8354362ad41d500374227d4"
-  config.client_secret = "2926b5cbbc9a4ecdb8b15c35aa2ea4c7"
-end
-
-CALLBACK_URL = "https://ancient-sea-5757.herokuapp.com/session/callback"
+CLIENT_SECRET = "7c4675e59eb7474d9a4eabf10c08fc0b"
+CLIENT_ID = "f5dff1c892654b54a918f8aa3d62d7ce"
+CALLBACK_URL = "http://localhost:3000/session/callback"

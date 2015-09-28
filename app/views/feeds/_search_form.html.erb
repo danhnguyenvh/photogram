@@ -1,13 +1,14 @@
-<div class="connected-carousels">
-<form method="GET" action="feeds">
-  <div class="stage" style="width:90%">
+<div class="">
+<div class="" style="width:90%">
   <div>Input latitude and longitude to search photo</div>
   <div style="display: inline">
     Latitude: <%=text_field_tag "lat", params["lat"], placeholder: "Latitude" %>
     Longitude: <%=text_field_tag "lng", params["lng"], placeholder: "Longitude" %>
   </div>
-  <div>Distance: <%=text_field_tag "distance", params["distance"], placeholder: "Distance" %> (optional)</div>
-  <div><button type="submit">Search</button></div>
+  <div>
+  	Distance: <%=text_field_tag "distance", params["distance"], placeholder: "Distance" %> (optional)
   </div>
-</form>
+  <div><button onClick="submitSearch()">Search</button></div>
+</div>
+<div id="noResult"></div>
 </div>

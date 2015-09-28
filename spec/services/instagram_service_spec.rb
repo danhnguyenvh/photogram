@@ -28,7 +28,7 @@ describe InstagramService do
       context 'when response failed' do
         let(:status) { 400 }
         it "expect raise error " do
-          expect { InstagramService.media_search params }.to raise_error(InstagramRequestError)
+          expect { InstagramService.media_search params }.to raise_error(RequestError)
         end
       end
     end  

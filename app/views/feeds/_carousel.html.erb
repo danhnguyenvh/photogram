@@ -1,25 +1,29 @@
-<div class="connected-carousels">
+<div class="carousel-content wrapper">
+  <div class="connected-carousels">
     <div class="stage">
-        <div class="carousel carousel-stage">
-            <ul>
-            <% @res.each do |item| %>
-                <li><img src=<%= item["images"]["standard_resolution"]["url"]%> width="440" height="440" title='<%=item["location"]["name"]%>'></li>
-            <% end %>
-           </ul>
-        </div>
-        <a href="#" class="prev prev-stage"><span>&lsaquo;</span></a>
-        <a href="#" class="next next-stage"><span>&rsaquo;</span></a>
+      <div class="carousel carousel-stage">
+        <ul class="carousel-large">
+        </ul>
+      </div>
+      <a href="#" class="prev prev-stage"><span>&lsaquo;</span></a>
+      <a href="#" class="next next-stage"><span>&rsaquo;</span></a>
     </div>
 
     <div class="navigation">
-        <a href="#" class="prev prev-navigation">&lsaquo;</a>
-        <a href="#" class="next next-navigation">&rsaquo;</a>
-        <div class="carousel carousel-navigation">
-            <ul>
-               <% @res.each do |item| %>
-                  <li><img src=<%= item["images"]["thumbnail"]["url"]%> width="50" height="50" ></li>
-                <%end%>
-            </ul>
-        </div>
+      <a href="#" class="prev prev-navigation">&lsaquo;</a>
+      <a href="#" class="next next-navigation">&rsaquo;</a>
+      <div class="carousel carousel-navigation">
+        <ul class="carousel-thumbnail">
+        </ul>
+      </div>
     </div>
+  </div>
 </div>
+<style type="text/css">
+.carousel-content{
+    display: none;
+}
+.next_page, .prev_page{
+    cursor: pointer;
+}
+</style>

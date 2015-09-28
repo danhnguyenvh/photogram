@@ -4,5 +4,3 @@ Search photo of posts on Instagram
 
 * Ruby 2.1.5
 * Rails 4.1.8
-Requirement:
-* Need account to login on Instagram

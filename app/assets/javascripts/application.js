@@ -10,13 +10,13 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery-1.11.3.min
-//= require jquery_ujs
-//= require turbolinks
+//= require jquery
 //= require bootstrap.min
+//= require turbolinks
+//= require jquery_ujs
 //= require underscore
+//= require gmaps/google
 //= require jquery.jcarousel.min
 //= require carousel.connected-carousels
-//= require gmaps/google
-//= require pagination
+//= require feeds
 //= require_tree .

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root :to => "feeds#index"
+  get 'feeds/search', to: 'feeds#search'
   get 'feeds', to: 'feeds#index'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

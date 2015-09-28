@@ -1,13 +1,8 @@
-<div class="wrapper">
+<div class="wrapper" style="padding:0px;">
   <strong><center>Instagram photo posts</center></strong>
   <%= render partial: "search_form" %>
-  <% if @res && @res.size > 0 %>
-    <%= render partial: "carousel" %>
-    <%= render partial: "google_map" %>
-    <%= render partial: "paging" %>
-  <%else%>
-    <% unless params[:lat].blank? or params[:lng].blank? %>
-      No result
-    <%end%>
-  <%end%>
+  <%= render partial: "carousel" %>
+  <%= render partial: "google_map" %>
+  <%= render partial: "paging" %>
 </div>
+

@@ -13,8 +13,8 @@ class InstagramService
       JSON(response.body)["data"]
     else
       Rails.logger.error "Request failed"
-      raise InstagramRequestError, "Failed request to Instagram"
+      raise RequestError, "Failed request to Instagram"
     end
   end
 end
-class InstagramRequestError < StandardError; end
+class RequestError < StandardError; end

@@ -1,69 +1,20 @@
-<style>
-.pagination.disabled a,  .pagination.disabled a:hover,  .pagination.disabled a:focus,  .pagination.disabled span {
-  color: #eee;
-  background: #fff;
-  cursor: default;
-}
-
-.pagination { float: left; }
-
-.pagination.disabled li.active a {
-  color: #fff;
-  background: #cccccc;
-  border-color: #cccccc;
-}
-
-.paging-container select {
-  float: left;
-  margin: 20px 0 20px 10px;
-  padding: 9px 3px;
-  border-color: #ddd;
-  border-radius: 4px;
-}
-img {
-    padding: 5px;
-}
-#table { padding: 10px; }
-</style>
-
-<script type="text/javascript">
-  $(function () {
-    load = function() {
-      window.tp = new Pagination('#tablePaging', {
-        itemsCount: <%=@res.count%>,
-        onPageSizeChange: function (ps) {
-            console.log('changed to ' + ps);
-        },
-        onPageChange: function (paging) {
-            //custom paging logic here
-            console.log(paging);
-            var start = paging.pageSize * (paging.currentPage - 1),
-                end = start + paging.pageSize,
-                $rows = $('#table').find('.data');
-
-            $rows.hide();
-
-            for (var i = start; i < end; i++) {
-                $rows.eq(i).show();
-            }
-        }
-      });
-    }
-    load();
-  });
-</script>
-
-<div class="container">
-  <form id="form1">
-    <div id="table">
-    <% if @res %>
-    <% @res.each do |item| %>
-      <span class="data">
-        <img src=<%= item["images"]["thumbnail"]["url"]%> width="150px" height="150px" title='<%=item["location"]["name"]%>'>
-      </span>
-    <% end %>
-    <% end %>
-    </div>
-    <div class="paging-container" id="tablePaging"> </div>
-  </form>
+<div class="tbl_data">
 </div>
+<div class="paging_bar">
+</div>
+<style>
+.img_paging{
+  padding: 5px;
+  padding-bottom: 0px;
+}
+.num_page{
+  cursor: pointer;
+  color: blue;
+}
+.active{
+  color: red;
+}
+img{
+	padding: 5px;
+}
+</style>

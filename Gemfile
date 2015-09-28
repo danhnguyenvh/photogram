@@ -39,6 +39,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'httparty'
 gem 'gmaps4rails'
 gem 'coffee-script-source', '1.8.0'
+gem 'rabl'
 
 gem 'rails_12factor', group: :production
 

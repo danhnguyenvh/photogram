@@ -21,7 +21,7 @@
             loadPaging(data_json, page);
             initPagingBar(data_json, pageSize);
             loadMap(data_json);
-            $(".carousel-content").show();
+            //$(".carousel-content").show();
             if (data_json.length > 0){
               $('#noResult').html("");
             }
@@ -55,10 +55,16 @@
       thumbnail += "<li><img src="+data[i].thumbnail+" width='50px' height='50px' title='"+data[i].location_name+"' ></li>";
       large += "<li><img src="+data[i].standard_resolution+" width='440px' height='440px' title='"+data[i].location_name+"' ></li>";
     }
-    $('.carousel-content .carousel-large').html(large);
-    $('.carousel-content .carousel-thumbnail').html(thumbnail);
+    $('.carousel-stage ul').html(large);
+    $('.carousel-navigation ul').html(thumbnail);
+    reload_js('assets/carousel.connected-carousels.js');
    }
-
+  
+  function reload_js(src) {
+    $('script[src="' + src + '"]').remove();
+    $('<script>').attr('src', src).appendTo('head');
+  }
+  
   function loadMap(data){
     var json_str = [];
     var len = data.length;

@@ -17,6 +17,7 @@
 //= require underscore
 //= require gmaps/google
 //= require jquery.jcarousel.min
-//= require carousel.connected-carousels
 //= require feeds
+//= require carousel.connected-carousels
+
 //= require_tree .

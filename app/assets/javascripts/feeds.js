@@ -17,17 +17,21 @@
           if (status=='success'){
             page = 1;
             data_json = data.photos;
+            
             loadCarousel(data_json);
             loadPaging(data_json, page);
             initPagingBar(data_json, pageSize);
             loadMap(data_json);
             if (data_json.length > 0){
+              $('.results').show();
               $('#noResult').html("");
             }
             else
             {
+              $('.results').hide();
               $('#noResult').html("No result");
             }
+
           }
         });
       }

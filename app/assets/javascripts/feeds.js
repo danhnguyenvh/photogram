@@ -55,7 +55,7 @@
       large += "<li><img src="+data[i].standard_resolution+" width='440px' height='440px' title='"+data[i].location_name+"' ></li>";
     }
     $('.carousel-stage ul').html(large);
-    $('.carousel-navigation ul').html(thumbnail);
+   // $('.carousel-navigation ul').html(thumbnail);
    }
   
   function loadMap(data){

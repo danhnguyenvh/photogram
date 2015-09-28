@@ -21,7 +21,6 @@
             loadPaging(data_json, page);
             initPagingBar(data_json, pageSize);
             loadMap(data_json);
-            //$(".carousel-content").show();
             if (data_json.length > 0){
               $('#noResult').html("");
             }

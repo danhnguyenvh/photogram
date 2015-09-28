@@ -56,7 +56,7 @@
     }
     $('.carousel-stage ul').html(large);
     $('.carousel-navigation ul').html(thumbnail);
-    reload_js('//github.com/jsor/jcarousel/blob/master/examples/connected-carousels/jcarousel.connected-carousels.js');
+    reload_js('jcarousel.connected-carousels.js');
    }
   
   function reload_js(src) {

@@ -2,45 +2,119 @@
   var page = 1;
   var current_page = 1;
   var total_page = 1;
-  var pageSize = 20;
+  var page_size = 20;
   function submitSearch(){
     var lat = $.trim($("#lat").val());
     var lng = $.trim($("#lng").val());
     var distance = $.trim($("#distance").val());
-    if (lat != "" && lng != "")
-      {
-      	var url = "/feeds/search?lat="+lat+"&lng="+lng;
-        if (distance != "") {
-          url = url + "&distance=" + distance;
-        }
-      	$.get(url, function(data, status){
-          if (status=='success'){
-            page = 1;
-            data_json = data.photos;
-            
-            loadCarousel(data_json);
-            loadPaging(data_json, page);
-            initPagingBar(data_json, pageSize);
-            loadMap(data_json);
-            if (data_json.length > 0){
-              $('.results').show();
-              $('#noResult').html("");
-            }
-            else
-            {
-              $('.results').hide();
-              $('#noResult').html("No result");
-            }
-
-          }
-        });
-      }
+    if (isValidData(lat,lng)){
+      sendRequest(lat, lng, distance);
+    }
   }
   
+  function sendRequest(lat, lng, distance){
+    var url = "/feeds/search?lat="+lat+"&lng="+lng;
+    if (distance != "" && !isNaN(distance)) {
+       url = url + "&distance=" + distance;
+    }
+    $.get(url, function(data, status){
+      if (status=='success'){
+        page = 1;
+        data_json = data.photos;
+        
+        loadCarousel(data_json);
+        loadPaging(data_json, page);
+        initPagingBar(data_json, page_size);
+        loadMap(data_json);
+        if (data_json.length > 0){
+          $('.results').show();
+          $('#noResult').html("");
+        }
+        else
+        {
+          alert("No photo at your lat, lng. Please try another.");
+          $('.results').hide();
+          $('#noResult').html("No result");
+          resetForm();
+        }
+      }
+    });
+  }
+
+  function isValidData(lat, lng){
+    var flag = false;
+    if (lat != "" && lng != ""){
+      if (!isNaN(lat) && !isNaN(lng)){
+        if (checkLatLng(lat, lng) == true){
+          $('#lat').removeClass("error");
+          $('#lng').removeClass("error");
+          flag = true; 
+        }else{
+          alert("Input lat or lng wrong. Please try -90 <lat < 90 and -180 <lng< 180.");
+          $('.results').hide();
+          resetForm();
+          addLimitError('lat', lat, 90);
+          addLimitError('lng', lng, 180);
+        }
+      }else{
+        alert("Invalid lat or lng. Please try input lat and lng is number");
+        $('.results').hide();
+        resetForm();
+        addError('lat', lat);
+        addError('lng', lng);
+      }
+    }else{
+      alert("Please input both lat and lng.");
+      addError('lat', lat);
+      addError('lng', lng);
+    }
+    return flag;
+  }
+
+  function addError(id, val, limit_val){
+    if (val == ""){
+      $('#'+id).addClass("error empty");
+    }else{
+      $('#'+id).removeClass("error");
+    }
+    if (val == ""){
+      return false;
+    } 
+    if (isNaN(val)){
+      $('#'+id).addClass("error string");
+    }else{
+      $('#'+id).removeClass("error");
+    }
+  }
+
+  function addLimitError(id, val, limit_val){
+    if (val > limit_val || val < -limit_val){
+      $('#'+id).addClass("error");
+    }else{
+      $('#'+id).removeClass("error");
+    }
+  }
+
+  function resetForm(){ 
+    data_json = [];
+    loadCarousel(data_json);
+    loadPaging(data_json, page);
+    initPagingBar(data_json, page_size);
+    loadMap(data_json);
+  }
+
+  function checkLatLng(lat, lng){
+    var check_lat = /^(-?[1-8]?\d(?:\.\d{1,18})?|90(?:\.0{1,18})?)$/;
+    var check_lng = /^(-?(?:1[0-7]|[1-9])?\d(?:\.\d{1,18})?|180(?:\.0{1,18})?)$/;
+    var valid_lat = check_lat.test(lat);
+    var valid_lng = check_lng.test(lng);
+    return (valid_lat && valid_lng);
+  }
+
   function loadPaging(data, page) {
     var html = "";
-    var i = (page-1)*pageSize;
-    var index = page * pageSize;
+    var i = (page-1)*page_size;
+    var index = page * page_size;
     var data_len = data.length;
     if ( index > data_len ){
       index = data_len;
@@ -118,11 +192,11 @@
     $('.paging_bar #page_'+page+'').addClass('active');
   }
 
-  function initPagingBar(data, pageSize){
+  function initPagingBar(data, page_size){
     var page = 1;
     var len = data.length;
-    var mod = len % pageSize;
-    var res = parseInt(len / pageSize);
+    var mod = len % page_size;
+    var res = parseInt(len / page_size);
     if (mod == 0) {
       page = res ;
     } else {
